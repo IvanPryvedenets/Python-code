@@ -1,0 +1,184 @@
+'''
+#Ex 1
+a = input()
+b = a[::-1]#Розворот строки
+print(b)
+'''
+
+
+'''
+#Ex1.2
+a = str(input())
+a = a.split(' ')#Розбиваємо слова за допомогою методу:
+print(len(a))#Підраховуємо кількість розбитих елементів
+'''
+
+
+'''
+
+#Exersis 2
+#Додаємо до словника ще 2 ключ-значення
+rivers = {'Amazon': 'America',
+}
+rivers['Nil'] = 'Africa'
+rivers['Dnipro'] = 'Ukraina'     
+print(rivers)
+
+#Використовуємо %s-знак для того, щоб замінити його на ключ-значення-.items()
+#зі словника
+for river, region in rivers.items():
+    print('The river %s are in %s region!' % (river, region))
+
+
+
+#Exersis 3
+#Якщо х замінити на одне зі слів які прирівнюються до х тоді в нас буде виведено відповідне йому значення
+e2g = {'stork': 'storch', 'hawk':'woodpecker', 'owl':'eule'}
+def word(x):
+    if x == 'stork':
+        print('storch')
+    elif x == 'hawk':
+        print('woodpecker')
+    elif x == 'owl':
+        print('eule')
+    else:
+        print('Pleas, input a corect word')
+word('owl')
+#додаємо ключ-значення до словника іншим способом
+other = {'book': 'buch', 'car': 'auto'}
+e2g.update(other)
+print(e2g)
+
+#Виводимо словник, ключ і значення в вигляді списку
+for key, values in e2g.items():
+    print(key, values)
+
+for key, values in e2g.items():
+    print(values)
+
+for key, vakues in e2g.items():
+    print(key)
+'''
+
+
+
+
+'''
+
+#Exersis 4
+inventory = {
+    'gold' : 500,
+    'pouch' : ['flint', 'twine', 'gemstone'],
+    'backpack' : ['xylophone','dagger', 'bedroll','bread loaf']
+}
+
+inventory['pocket'] = ['seashell', 'strange berry', 'lint']
+print(inventory)
+
+
+#will sorted the key 'backpack' and print his
+inventory['backpack'].sort()
+print(inventory)
+
+
+#Видаляємо bagger
+inventory['backpack'].remove('bagger')
+print(inventory)
+
+
+#Додаємо 50 до значення ключа gold
+inventory['gold'] +=50
+print(inventory['gold'])
+'''
+
+
+'''
+#Ex 5
+#Створюємо словник
+prices = {}
+other = {"banana": 4,
+         "apple": 2,
+         "orange": 1.5,
+         "pear": 3
+}
+
+#Вставляємо словник other in prices
+prices.update(other)
+print(prices)
+
+#Створюємо словник stock
+stock = {
+  "banana": 6,
+  "apple": 0,
+  "orange": 32,
+   "pear": 15
+}
+
+
+#Використовуємо наступну операцію для послідовного отримання результатів
+#Для кожного ключа в словнику prices, видрукуй кожен ключ.
+for x in prices:
+    print(x)
+#Видрукуй значення ключів зі словника prices/Додаємо деякий текс для кращого вигляду
+    print('Ціна %s' % prices[x])
+#Видрукуй значення ключів зі словника stock
+    print('Залишок %s' % stock[x])
+
+#Перемножуємо значення
+total = 0
+for x in prices:
+    (prices[x] * stock[x])
+#Отримуємо їх суму
+    total = total + prices[x] * stock[x]
+print (total)
+'''
+
+
+
+
+'''
+#Ex6
+#Створюємо словники
+lloyd = { "name": "Lloyd", "homework": [90.0,97.0,75.0,92.0],  "quizzes": [88.0,40.0,94.0], "tests": [75.0,90.0] }
+alice = {"name": "Alice", "homework": [100.0, 92.0, 98.0, 100.0],  "quizzes": [82.0, 83.0, 91.0], "tests": [89.0, 97.0] }
+tyler = { "name": "Tyler",  "homework": [0.0, 87.0, 75.0, 22.0], "quizzes": [0.0, 75.0, 78.0],  "tests": [100.0, 100.0] }
+
+#Об'єднуємо словники в список для зручнішої роботи з данними
+students = [lloyd, alice, tyler]
+
+#Виводимо данні зі словника через цикл за допомогою списку
+for student in students:
+    print (student['name'])
+    print (student['homework'])
+    print (student['quizzes'])
+    print (student['tests'])
+
+#Сумуємо числа і виводимо їх середнє значення
+def avarage(x):
+    total = sum(x)#Виводить суму чисел
+    total = float(total)#Конвертує в числа з плаваючою точкою
+    return total / len(x)#Виводимо середнє значення за допомогою ділення суми на кількість
+
+#Створюємо функцію яка буде виводити бали студента
+def get_letter_grade(s):
+    if s >= 90:
+        print ('Your level A')
+    elif s <= 90 and s >= 70: #Якщо бал(s)-цифра буде менша 90 and-і більшф 70 тоді виводь на екран:
+        print ('Your level B')
+    elif s <= 70 and s >= 50:
+        print ('Your level C')
+    else:
+        print('You must to try one more time')
+get_letter_grade(49)#Задаємо бали і отримуємо результат
+'''    
+
+
+
+
+
+
+
+
+    
+
+
