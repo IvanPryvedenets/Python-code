@@ -6,15 +6,15 @@ print(b)
 '''
 
 
-'''
+
 #Ex1.2
 a = str(input())
 a = a.split(' ')#Розбиваємо слова за допомогою методу:
 print(len(a))#Підраховуємо кількість розбитих елементів
-'''
 
 
-'''
+
+
 
 #Exersis 2
 #Додаємо до словника ще 2 ключ-значення
@@ -58,12 +58,11 @@ for key, values in e2g.items():
 
 for key, vakues in e2g.items():
     print(key)
-'''
 
 
 
 
-'''
+
 
 #Exersis 4
 inventory = {
@@ -89,10 +88,8 @@ print(inventory)
 #Додаємо 50 до значення ключа gold
 inventory['gold'] +=50
 print(inventory['gold'])
-'''
 
 
-'''
 #Ex 5
 #Створюємо словник
 prices = {}
@@ -131,12 +128,10 @@ for x in prices:
 #Отримуємо їх суму
     total = total + prices[x] * stock[x]
 print (total)
-'''
 
 
 
 
-'''
 #Ex6
 #Створюємо словники
 lloyd = { "name": "Lloyd", "homework": [90.0,97.0,75.0,92.0],  "quizzes": [88.0,40.0,94.0], "tests": [75.0,90.0] }
@@ -169,8 +164,38 @@ def get_letter_grade(s):
         print ('Your level C')
     else:
         print('You must to try one more time')
-get_letter_grade(49)#Задаємо бали і отримуємо результат
-'''    
+get_letter_grade(49)#Задаємо бали і отримуємо результат  
+
+# Завдання-1 Напишіть функцію яка виводить максимальне число
+def max_of_three(*args):
+    a = list(args)
+    a.sort()
+    return a[-1]
+print(max_of_three(10, 4, 5))
+
+#Завдання-2 Написати функцію яка виводить найдовше слово
+def random_from_list(*args):
+    lst = list(args)
+    for x in lst:
+        if len(x) > 0:
+            return x
+print(random_from_list(max(['Name','My name', 'Your name'])))
+
+#Завдання-3
+import random
+def summarizer():
+    result = 0
+    #def random_10():
+    while result < 100:
+        a = random.randint(1, 10)
+        result += a
+        if result >= 100:
+            return result
+            break
+print(summarizer())
+
+
+
 
 
 
