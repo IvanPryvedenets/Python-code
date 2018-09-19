@@ -196,6 +196,65 @@ print(summarizer())
 
 
 
+# Модуль, який вираховує час виконання функції
+import time, sys
+trace = lambda *args: None # or print
+timefunc = time.clock if sys.platform == 'win32' else time.time
+
+
+def timer(func, *pargs, _reps = 1000, **kargs):
+    trace(func, pargs, kargs, _reps)
+    start = timefunc()
+    for i in range(_reps):
+        ret = func(*pargs, **kargs)
+    elapsed = timefunc() - start
+    return (elapsed, ret)
+
+def best(func, *pargs, _reps=50, **kargs):
+    best = 2 ** 32
+    for i in range(_reps):
+        (time, ret) = timer(func, *pargs, _reps=1, **kargs)
+        if time < best: best = time
+    return (best, ret)
+
+
+# Результати та порівння тривалості виконання різних типів функцій
+import sys, mytime
+
+reps = 10000
+repslist = range(reps)
+
+
+def forLoop():
+    res = []
+    for x in repslist:
+        res.append(abs(x))
+    return res
+
+def listComp():
+    return[abs(x) for x in repslist]
+
+
+def mapCall():
+    return list(map(abs, repslist))
+
+def genExpr():
+    return list(abs(x) for x in repslist)
+
+def genFunc():
+    def gen():
+        for x in repslist:
+            yield abs(x)
+    return list(gen())
+
+
+print(sys.version)
+for test in (forLoop, listComp, mapCall, genExpr, genFunc):
+    elapsed, result = mytime.timer(test)
+    print('-' * 33)
+    print('%-9s: %.5f => [%s...%s]' %
+          (test.__name__,elapsed, result[0], result[-1]))
+
 
 
 
