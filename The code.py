@@ -255,8 +255,25 @@ for test in (forLoop, listComp, mapCall, genExpr, genFunc):
     print('%-9s: %.5f => [%s...%s]' %
           (test.__name__,elapsed, result[0], result[-1]))
 
+    
+#функція для підрахунку значень іменнованих фргументів
+def func(**args):
+    res = []
+    for v in args.values():
+        res.append(v)
+    return sum(res)
 
+def adder(**args):
+    res = list(args.values())
+    first = res[0]
+    for other in res[1:]:
+        first += other
+    return first
 
+print(func(a = 6, b = 9))
+print(adder(a = 3, b = 4))
+
+    
 
 
 
