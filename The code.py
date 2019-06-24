@@ -224,6 +224,13 @@ def num(a, b, c)
     else:
         return a + b + c
 
-    
+#Додай на початок строки "Is " якщо вона так не починається
+def string(a):
+    if a.lower().startswith('is'):
+        return a
+    else:
+        a = a.lower()
+        return 'Is ' + a
+        
 
 
