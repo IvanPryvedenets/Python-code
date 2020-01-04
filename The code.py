@@ -232,5 +232,39 @@ def string(a):
         a = a.lower()
         return 'Is ' + a
         
+#Easy "Random Game with two Units"
+import random
+
+
+class Warrior:
+    attack = 20
+
+
+unit = Warrior()
+
+enemy = Warrior()
+
+unit.health = 100
+enemy.health = 100
+
+
+def func(a, b):
+    while a.health >= 1 and b.health >= 1:
+        i = random.randint(-1, 1)
+        if i == -1:
+            a.health -= b.attack
+            print('d do attack on a', '/a have: ', a.health, 'health')
+        elif i == 1:
+            b.health -= a.attack
+            print('a do attack on b', '/b have: ', b.health, 'health')
+        else:
+            a.health += 20
+            b.health += 20
+            print('Regeneration')
+
+
+func(unit, enemy)
+
+
 
 
