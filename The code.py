@@ -266,5 +266,40 @@ def func(a, b):
 func(unit, enemy)
 
 
+#Work with personal of some commpany
+class Person:
+    def __init__(self, name, surname, qualification=1):
+        self.name = name
+        self.surname = surname
+        self.qualification = qualification
+
+    def worker_info(self):
+        print('Worker has next data: ', self.name, self.surname, ' has qualification: ', self.qualification)
+
+    def __del__(self):
+        print('До свидания, мистер: ', self.name)
+
+
+worker3 = Person('Dimitry', 'Paliniuk', qualification=5)
+worker1 = Person('Anastasia', 'Perdoliuk', qualification=7)
+worker2 = Person('Wladimir', 'Hardalenko',  qualification=6)
+
+
+def func(a, b, c):
+    l = [a, b, c]
+    fate = []
+    for i in l:
+        i.worker_info()
+        fate.append(i.qualification)
+    fate.sort()
+    for i in l:
+        if i.qualification == fate[0]:
+            i.__del__()
+
+
+func(worker3, worker2, worker1)
+input()
+
+
 
 
