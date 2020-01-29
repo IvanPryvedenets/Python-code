@@ -302,4 +302,101 @@ input()
 
 
 
+#Managment of students in some class
+lloyd = { "name": "Lloyd", "homework": [90.0,97.0,75.0,92.0],  "quizzes": [88.0,40.0,94.0], "tests": [75.0,90.0] }
+alice = {"name": "Alice", "homework": [100.0, 92.0, 98.0, 100.0],  "quizzes": [82.0, 83.0, 91.0], "tests": [89.0, 97.0] }
+tyler = { "name": "Tyler",  "homework": [0.0, 87.0, 75.0, 22.0], "quizzes": [0.0, 75.0, 78.0],  "tests": [100.0, 100.0] }
+
+students = [lloyd, alice, tyler]
+
+index = 0
+
+while index < 3:
+    for key, value in students[index].items():
+        print(key, value,)
+
+    index += 1
+    print('\n')
+
+
+def func(*args):
+    index = 0
+
+    Lloyd = 0
+    Alice = 0
+    Tyler = 0
+
+    while index < 3:
+        homework_l = students[index]['homework']
+        quizzes_l = students[index]['quizzes']
+        tests_l = students[index]['tests']
+
+        mid_h = float('{0:.1f}'.format(sum(homework_l) / len(homework_l)))
+        mid_q = float('{0:.1f}'.format(sum(quizzes_l) / len(quizzes_l)))
+        mid_t = float('{0:.1f}'.format(sum(tests_l) / len(tests_l)))
+
+        total = float('{0:.1f}'.format((mid_h + mid_q + mid_t) / 3))
+
+        print(students[index]['name'], mid_h, mid_q, mid_t, total)
+
+        students[index]['mark'] = total
+
+        if index == 0:
+            Lloyd += total
+            print(Lloyd)
+        elif index == 1:
+            Alice += total
+            print(Alice)
+        else:
+            Tyler += total
+            print(Tyler)
+
+        index += 1
+    return Lloyd, Alice, Tyler
+
+
+func(students)
+
+
+def mark(*args):
+    index = 0
+
+    while index < 3:
+        if students[index]['mark'] > 90:
+            print(students[index]['name'], 'has: A')
+
+        elif students[index]['mark'] < 90 and students[index]['mark'] > 70:
+            print(students[index]['name'], 'has: B')
+
+        elif students[index]['mark'] < 70 and students[index]['mark'] > 50:
+            print(students[index]['name'], 'has: C')
+
+        else:
+            print(students[index]['name'], 'has: D')
+
+        index += 1
+
+    middle_mark = (float(students[0]['mark'] + students[1]['mark'] + students[2]['mark'])) / 3
+
+    print('\----------------------------------------------/')
+
+    print('middle mark of this class: {0:.1f}'.format(middle_mark))
+
+    if middle_mark > 90:
+        print('middle mark of this class: A')
+
+    elif middle_mark > 70 and middle_mark < 90:
+        print('middle mark of this class: B')
+
+    elif middle_mark > 50 and middle_mark < 70:
+        print('middle mark of this class: C')
+
+    else:
+        print('middle mark of this class: D')
+
+
+mark(students)
+
+
+
 
