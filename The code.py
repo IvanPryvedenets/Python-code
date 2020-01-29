@@ -398,5 +398,27 @@ def mark(*args):
 mark(students)
 
 
+#how to change size of the item in some string
+
+def func():
+    s = 'string'
+    l = []
+    ind = 0
+
+    for i in s:
+        if i == s[ind]:
+            s = s.replace(i, s[ind].upper())
+            l.append(s)
+            ind += 1
+            
+    ind = 0
+    for i in s:
+        if i == s[ind]:
+            s = s.replace(i, s[ind].lower())
+            l.append(s)
+            ind += 1
+    print(l)
+func()
+
 
 
