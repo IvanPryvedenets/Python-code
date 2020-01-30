@@ -422,3 +422,52 @@ func()
 
 
 
+
+numbers = "0123456789"
+lower_case = "abcdefghijklmnopqrstuvwxyz"
+upper_case = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+special_characters = "!@#$%^&*()-+"
+ukr = 'а, б, в, г, ґ, д, е, є, ж, з, и, і, ї, й, к, л, м, н, о, п, р, с, т, у, ф, х, ц, ч, ш, щ, ь, ю, я'.replace(', ', '')
+
+password = input('Input your password: ')
+
+
+
+
+
+
+# Work with passwords
+def func(password):
+    if len(password) < 6:  # Check weight of the password
+        print('Your password is too short')
+    else:
+
+        def check(password, arg):  # Create function that to check, have the password all the important figures or not
+            for i in arg:
+                ind = password.find(i)
+                # print(ind)
+
+                if ind > -1:  # if yes then return True
+                    return True
+
+        for i in ukr:  # The password has any item from ukr literal
+            ind = password.find(i)
+
+            if ind > -1:  # If yes, show next message
+                print('Your password mast have next items: {}, {}, {}, {}'.format(numbers, lower_case, upper_case, special_characters))
+                break
+            else:
+                # Call 'check' function
+                num_res = check(password, numbers)
+                low_res = check(password, lower_case)
+                upe_res = check(password, upper_case)
+                spe_res = check(password, special_characters)
+
+                if num_res == True and low_res == True and upe_res == True and spe_res == True:  # If all the called functions return True
+                    print('Your password is correct')
+                else:
+                    print('Your password mast have next items: {}, {}, {}, {}'.format(numbers, lower_case, upper_case, special_characters))
+            break
+
+
+func(password)
