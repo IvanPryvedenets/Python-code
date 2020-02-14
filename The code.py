@@ -471,3 +471,42 @@ def func(password):
 
 
 func(password)
+
+
+
+from random import randint
+
+
+# The decorator which calls "gen_random" func 20 times
+def retry(func):
+    def wrapper():
+        n = 0
+        while n < 20:
+
+            if func() == 1:  # If result of "gen_random" is 1
+                print('success')
+                break
+
+            n += 1
+            if n == 20:  # If "gen_random" doesn't return 1 after called 20 times
+                print('no')
+    return wrapper()
+
+
+# Func which generates random numbers
+@retry
+def gen_random():
+    r = randint(1, 10)
+
+    if r == 1:
+        return r
+    else:
+        return ImportError
+
+
+# Func which calls "gen_random"
+def run():
+    result = gen_random()
+    return result
+
+
