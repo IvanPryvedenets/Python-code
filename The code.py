@@ -510,3 +510,31 @@ def run():
     return result
 
 
+
+from random import randint
+from functools import reduce
+
+
+# Work with imported function of python
+def func():
+
+    no_name_func = lambda x: x * randint(1, 10)  # Func that will multiply integer on random integer
+
+    l = []
+
+    for i in range(1, 11):  # Generate the list with integer from 1 to 10
+        l.append(i)
+
+    result = list(map((no_name_func), l))  # Used "map" function for multiply integers
+
+    for i in list(filter(lambda x: x % 2, l)):  # The list was filtered and removed odd integers
+        l.remove(i)
+
+    s = reduce(lambda x, y: x + y, l)  # At last we gave sum of the items in the list
+
+    print(s)
+
+func()
+
+
+
