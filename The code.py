@@ -537,4 +537,51 @@ def func():
 func()
 
 
+# Work with personal
+class Person:
+    def __init__(self, name, job=None, pay=0):
+        self.name = name
+        self.job = job
+        self.pay = pay
+
+    def __str__(self):
+        return '[Person has next data: {}, {}, {}]'.format(self.name, self.job, self.pay)
+
+    def giveRaise(self, percent):
+        self.pay = int(self.pay * (1 + percent))
+
+
+class Manager:
+    def __init__(self, name, pay):
+        self.person = Person(name, 'Manager', pay)
+
+    def giveRaise(self, percent, bonus=.10):
+        self.person.giveRaise(percent + bonus)
+
+    def __getattr__(self, item):
+        return getattr(self.person, item)
+
+    def __str__(self):
+        return str(self.person)
+
+
+class Department:
+    def __init__(self, *args):
+        self.members = list(args)
+
+    def addMember(self, person):
+        self.members.append(person)
+
+    def giveRaise(self, percent):
+        for person in self.members:
+            person.giveRaise(percent)
+
+    def showAll(self):
+        for person in self.members:
+            print(person)
+
+
+
+
+
 
