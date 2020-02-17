@@ -585,3 +585,118 @@ class Department:
 
 
 
+import io
+
+
+# The class 'Human'
+class Human:
+    def __init__(self, t):
+        self.name = t[0]
+        self.last_name = t[1]
+        self.age = t[2]
+        self.briber = t[3]
+        self.brib = None
+        self.height = 186
+        self.mass = 114
+
+        if self.briber == 'True':
+            Deputy.give_tribute(self)
+
+    def __hash__(self):
+        return hash(self.name) + hash(self.last_name)
+
+    def __eq__(self, other):
+        return self.name == other.name and \
+                self.last_name == other.last_name
+
+    def __str__(self):
+        return 'Deputy data: {}, {}, {}, {}, {}, {}, {}'.format(self.name, self.last_name, self.age, self.briber, self.brib, self.height, self.mass)
+
+
+class Deputy(Human):  # This class checks have some deputy criminal money or not
+    def give_tribute(self):
+
+        if self.briber == False:
+            print('This person is not a briber')
+        else:
+            brib = int(input('How much money wold like to take this deputy? '))
+
+            if brib > 10000:
+                print('This deputy may to go to the police')
+            else:
+                self.brib = brib
+
+
+class Fraction:  # Fraction may to create, delete, show deputies, clear fraction and other things
+    def add_deputy(self):  # Add deputy and to write him to a file
+        print('Input deputy data')
+
+        deputy = input('Name: '), input('Last name: '), input('Age: '), input('Briber: ')
+
+        deputy1 = Deputy(deputy)
+
+        f = open('file.txt', 'a')
+        f.write(deputy1.__str__() + '\n')
+        f.close()
+
+    def del_deputy(self):  # Delete the deputy from a file, if name and last name the same with deputy data and data that typed the user
+        print('Input data of deputy that you want to delete')
+
+        data = input('Name: '), input('Last name: ')  # The user type some data
+
+        with open('file.txt', 'r') as f:  # Open a file with deputies
+            lines = f.readlines()
+
+        for line in lines:
+            finder = line.find(data[0]), line.find(data[1])  # Check, haves this file deputy or not
+
+            if finder[0] > 1 and finder[1] > 1:  # If program input to the variable index > 0 than deputy is in a file
+                lines.remove(line)  # Remofe deputy data from a file
+
+        f.close()
+
+        with open('file.txt', 'w') as f:  # Write deputies to a file
+            f.writelines(lines)
+
+        f.close()
+
+    def show_bribers(self):  # Show briber from deputies list
+
+        f = open('file.txt', 'r')
+
+        deputies = [line.split(', ') for line in f.readlines()]  # Add bribers data to the list
+
+        f.close()
+
+        # Add bribers to the list and sort the persons ascending briber
+        self.bribers = sorted([deputy for deputy in deputies if deputy[3] == 'True'], key=lambda briber: briber[4], reverse=True)
+
+        return 'All bribers: {} \nSuper briber: {}'.format(self.bribers, self.bribers[0])
+
+    def show_deputies(self):  # Show all deputies
+
+        f = open('file.txt')
+
+        for line in f.readlines():
+            print(line)
+
+        f.close()
+
+    def clear_fraction(self):  # Delete all deputies from fraction
+
+        f = open('file.txt', 'w')
+
+        try:
+            for line in f.readlines():
+                print(line)
+        except io.UnsupportedOperation:
+            print('Operation is successful, all deputies was deleted')
+
+    def are_deputies(self):  # The fraction haves any deputies or not
+
+        f = open('file.txt')
+
+        if len(f.readlines()) >= 1:
+            print('The fraction haves deputies')
+        else:
+            print('The fraction does not have any deputies')
