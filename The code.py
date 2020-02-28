@@ -14,56 +14,6 @@ print(len(a))#Підраховуємо кількість розбитих ел�
 
 
 
-
-
-#Exersis 2
-#Додаємо до словника ще 2 ключ-значення
-rivers = {'Amazon': 'America',
-}
-rivers['Nil'] = 'Africa'
-rivers['Dnipro'] = 'Ukraina'     
-print(rivers)
-
-#Використовуємо %s-знак для того, щоб замінити його на ключ-значення-.items()
-#зі словника
-for river, region in rivers.items():
-    print('The river %s are in %s region!' % (river, region))
-
-
-
-#Exersis 3
-#Якщо х замінити на одне зі слів які прирівнюються до х тоді в нас буде виведено відповідне йому значення
-e2g = {'stork': 'storch', 'hawk':'woodpecker', 'owl':'eule'}
-def word(x):
-    if x == 'stork':
-        print('storch')
-    elif x == 'hawk':
-        print('woodpecker')
-    elif x == 'owl':
-        print('eule')
-    else:
-        print('Pleas, input a corect word')
-word('owl')
-#додаємо ключ-значення до словника іншим способом
-other = {'book': 'buch', 'car': 'auto'}
-e2g.update(other)
-print(e2g)
-
-#Виводимо словник, ключ і значення в вигляді списку
-for key, values in e2g.items():
-    print(key, values)
-
-for key, values in e2g.items():
-    print(values)
-
-for key, vakues in e2g.items():
-    print(key)
-
-
-
-
-
-
 #Exersis 4
 inventory = {
     'gold' : 500,
