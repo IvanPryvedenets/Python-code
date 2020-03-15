@@ -486,6 +486,25 @@ def func():
 
 func()
 
+class Shop:
+
+    def __init__(self):
+        self.shop_name = 'Real cool shop'
+        self.story_type = 'Cool shopm it is all'
+        self.units_number = 2
+
+    def describe_shop(self):
+        print(self.shop_name, self.story_type)
+
+    def open_shop(self):
+        print('Our shop is open for you')
+
+    def set_number_of_units(self, units_number):
+        self.units_number = units_number
+
+    def increment_number_of_units(self, calculate):
+        self.units_number *= calculate
+
 
 # Work with personal
 class Person:
