@@ -708,3 +708,22 @@ def getCount(inputStr):
 
 print(getCount("abracadabra"))
 
+
+# Work with stranges words
+
+def order(sentence):
+    if sentence == "":
+        return sentence
+    
+        num = 1
+    
+        sen = ''
+    
+        while num < len(sentence.split(' ')) + 1:
+    
+            sen += [w for w in sentence.split(' ') if str(num) in w][0] + ' '
+            num += 1
+        return sen[:-1]
+  
+print(order("is2 Thi1s T4est 3a"))
+
