@@ -693,3 +693,18 @@ def alphabet_position(text):
 
 
 alphabet_position("The narwhal bacons at midnight.")
+
+
+# Return count of vowels letters in the string
+
+def getCount(inputStr):
+    
+    vowels = ['a', 'e', 'i', 'o', 'u']
+    
+    num_vowels = sum([1 for a in inputStr if a in vowels])
+    
+    return num_vowels
+
+
+print(getCount("abracadabra"))
+
