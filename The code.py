@@ -669,3 +669,27 @@ class Fraction:  # Fraction may to create, delete, show deputies, clear fraction
             print('The fraction haves deputies')
         else:
             print('The fraction does not have any deputies')
+
+
+
+
+# Delete the same items if they are a sequence
+from itertools import groupby
+
+def unique_in_order(iterable):
+    return [i for i, _ in groupby(iterable)]
+
+
+# Return sequence numbers of letters of english alphabet
+
+import string
+def alphabet_position(text):
+
+    values = {k: v for (k, v) in zip(range(1, 27), string.ascii_lowercase)}
+
+    numbers = ' '.join([str(k) for i in text.lower() for k, v in values.items() if i == v])
+
+    print(numbers)
+
+
+alphabet_position("The narwhal bacons at midnight.")
