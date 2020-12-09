@@ -1,3 +1,36 @@
+# Work with json objects
+import json
+from functools import reduce
+
+with open("json_obj.json") as complex_data: # Open json file
+    data = json.loads(complex_data.read()) # Create a wariable from json object
+
+
+print(data)
+
+result = {'bool': 0, 'int': 0, 'float': 0, 'str': 0, 'list': 0, 'dict': 0}
+
+
+def generator(*args, **kwargs): # Create function
+    for i in args[0]: # For elament in variable
+        result[type(i).__name__] += 1 # Add one poin to type of current element
+        if type(i) == dict:
+            next = list(reduce(lambda x, y: x + y, i.items())) # Create list from dict
+
+            generator(next) # Start this function again
+        elif type(i) == list: # If type is list start this func again
+            generator(i)
+
+    return result # return dict with result
+
+
+for k, v in generator(data).items(): # Show results
+    print(k, '=', v)
+
+
+
+
+
 '''
 #Ex 1
 a = input()
